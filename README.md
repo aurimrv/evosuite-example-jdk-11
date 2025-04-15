@@ -1,6 +1,6 @@
 # EvoSuite Sample
 
-Thie version is compilant with JDK 17. Since there is no EvoSuite 1.2.0 available in Maven Repository, first thing is to install EvoSuite 1.2.0 in the local repository.
+Thie version is compilant with JDK 11. Since there is no EvoSuite 1.2.0 available in Maven Repository, first thing is to install EvoSuite 1.2.0 in the local repository.
 
 ## Install EvoSuite 1.2.0 in Local Maven Repository
 
