@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>Identifier</groupId>
+    <artifactId>Identifier</artifactId>
+    <version>1.0</version>
+
+    <dependencies>
+        <!-- JUnit 4 -->
+        <dependency>
+				    <groupId>junit</groupId>
+				    <artifactId>junit</artifactId>
+				    <version>4.13.2</version>
+				    <scope>test</scope>
+				</dependency>
+        <!-- JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- EvoSuite runtime only -->
+        <dependency>
+            <groupId>org.evosuite</groupId>
+            <artifactId>evosuite-standalone-runtime</artifactId>
+            <version>1.2.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+						<plugin>
+				      <groupId>org.apache.maven.plugins</groupId>
+				      <artifactId>maven-compiler-plugin</artifactId>
+				      <version>3.11.0</version> <!-- Use recent version -->
+				      <configuration>
+				        <source>11</source>
+				        <target>11</target>
+				      </configuration>
+				    </plugin>
+            <!-- Surefire plugin for running tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>pitest-run</id>
+            <build>
+                <plugins>
+                    <!-- PIT Plugin for mutation testing -->
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>1.19.1</version>
+                        <configuration>
+                            <targetClasses>
+                                <param>ds.*</param>
+                            </targetClasses>
+                            <targetTests>
+                                <param>ds.*</param>
+                            </targetTests>
+                            <outputFormats>
+                                <param>HTML</param>
+                                <param>XML</param>
+                                <param>CSV</param>
+                            </outputFormats>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
